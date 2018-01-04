@@ -1,5 +1,5 @@
 'use strict';
-/d
+
 var operations = {
 	getSports: {
 		type: 'get',

@@ -1,6 +1,6 @@
 'use strict';
 
-//D
+
 var _ = require('lodash');
 var request = require('request');
 var qs = require('qs');
