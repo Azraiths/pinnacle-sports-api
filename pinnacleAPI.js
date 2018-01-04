@@ -1,5 +1,6 @@
 'use strict';
 
+//D
 var _ = require('lodash');
 var request = require('request');
 var qs = require('qs');
@@ -52,6 +53,18 @@ var PinnacleAPI = function(username, password) {
 			});
 		}).bind(this));
 	}).bind(this);
+
+
+	var promiseRequestOptions = function (options) {
+        return {
+            url: this.url + '?' + qs.stringify(options),
+            rejectUnauthorized: false,
+            json : true,
+            headers: {
+                'Authorization': auth
+            }
+        };
+    }.bind(this);
 
 	var parse = function(body, cb) {
 		try {
@@ -115,6 +128,20 @@ var PinnacleAPI = function(username, password) {
 		checkRequired(options, cb);
 		get(options, cb);
 	}
-}
+
+    this.getLine = function(options, cb) {
+        this.operation = 'getLine';
+        buildUrl();
+        checkRequired(options, cb);
+        get(options, cb);
+    }
+
+    this.getPromiseRequestOptions = function (options,cb) {
+		this.operation = 'getPromiseRequestOptions';
+		buildUrl();
+		checkRequired(options,cb);
+		return promiseRequestOptions(options);
+    }
+};
 
 module.exports = PinnacleAPI;

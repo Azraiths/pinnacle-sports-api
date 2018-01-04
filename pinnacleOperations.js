@@ -1,5 +1,5 @@
 'use strict';
-
+/d
 var operations = {
 	getSports: {
 		type: 'get',
@@ -127,6 +127,12 @@ var operations = {
 		endpoint: 'translations',
 		required: ['cultureCodes', 'baseTexts'],
 		devUrl: 'http://www.mocky.io/v2/57281276120000b90ec05a42'
+	},
+	getPromiseRequestOptions: {
+        version: 'v1',
+        endpoint: 'line',
+        required: ['sportId', 'leagueid', 'eventid', 'periodNumber', 'betType', 'oddsFormat'],
+        devUrl: 'http://www.mocky.io/v2/57280237120000e90cc05a2f'
 	}
 };
 
